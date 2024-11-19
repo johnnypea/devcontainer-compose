@@ -2,6 +2,6 @@
     "name": "devcontainer-compose",
     "dockerComposeFile": "compose.yaml",
     "service": "nginxhello",
-    "workspaceFolder": "/",
+    "workspaceFolder": "/home",
     "shutdownAction": "stopCompose"
 }
