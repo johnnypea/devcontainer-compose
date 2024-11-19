@@ -1,29 +1,41 @@
 version: '3.1'
 
 services:
-  app:
-    image: wordpress
-    restart: always
-    ports:
-      - 443:80
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: exampleuser
-      WORDPRESS_DB_PASSWORD: examplepass
-      WORDPRESS_DB_NAME: exampledb
-    volumes:
-      - ../..:/workspaces:cached
+    app:
+        image: wordpress
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: db
+            WORDPRESS_DB_USER: exampleuser
+            WORDPRESS_DB_PASSWORD: examplepass
+            WORDPRESS_DB_NAME: exampledb
+        volumes:
+            - ..:/workspace:cached
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.http.routers.whoami.rule=Host(`whoami.webentor.com`)'
+            - 'traefik.http.routers.whoami.entrypoints=websecure'
+            - 'traefik.http.routers.whoami.tls.certresolver=myresolver'
+        networks:
+            - traefik
+            - default
 
-  db:
-    image: mariadb
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: exampledb
-      MYSQL_USER: exampleuser
-      MYSQL_PASSWORD: examplepass
-      MYSQL_RANDOM_ROOT_PASSWORD: '1'
-    volumes:
-      - db:/var/lib/mysql
+    db:
+        image: mariadb
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: exampledb
+            MYSQL_USER: exampleuser
+            MYSQL_PASSWORD: examplepass
+            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+        volumes:
+            - db:/var/lib/mysql
+        networks:
+            - default
 
 volumes:
-  db:
+    db:
+
+networks:
+    traefik:
+        external: true
