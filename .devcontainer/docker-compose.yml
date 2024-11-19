@@ -2,8 +2,8 @@ version: '3'
 
 services:
     nginxhello:
-        # image: nginxdemos/hello:latest
-        image: hello-world
+        image: nginxdemos/hello:latest
+        # image: hello-world
         ports:
             - '8686:80'
         volumes:
