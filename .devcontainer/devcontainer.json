@@ -1,6 +1,22 @@
+// For format details, see https://aka.ms/devcontainer.json.
 {
-    "name": "devcontainer-compose",
+    "name": "WordPress Test Container",
     "dockerComposeFile": "docker-compose.yml",
-    "service": "nginxhello",
+    "service": "app",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "username": "wordpress"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20"
+        },
+        "ghcr.io/devcontainers/features/git:1": {}
+    },
+    "forwardPorts": [
+        8080
+    ],
+    "remoteUser": "wordpress"
 }
