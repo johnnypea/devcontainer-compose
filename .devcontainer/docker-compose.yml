@@ -11,6 +11,8 @@ services:
             WORDPRESS_DB_NAME: exampledb
         volumes:
             - ..:/workspace:cached
+        expose:
+          - "80"
         labels:
             - 'traefik.enable=true'
             - 'traefik.http.routers.whoami.rule=Host(`whoami.webentor.com`)'
