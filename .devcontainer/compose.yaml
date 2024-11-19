@@ -3,5 +3,5 @@ version: '3'
 services:
   nginxhello:
     image: nginxdemos/hello:latest
-    ports:
-      - "8686:80"
+    # ports:
+    #   - "8686:80"
