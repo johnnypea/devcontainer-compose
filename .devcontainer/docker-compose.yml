@@ -6,3 +6,5 @@ services:
     image: hello-world
     ports:
       - "8686:80"
+    volumes:
+      - ../..:/workspaces:cached
