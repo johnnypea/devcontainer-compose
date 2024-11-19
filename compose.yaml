@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  nginxhello:
+    image: nginxdemos/hello:latest
+    ports:
+      - "80:80"
