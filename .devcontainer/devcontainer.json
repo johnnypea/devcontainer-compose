@@ -15,5 +15,5 @@
         },
         "ghcr.io/devcontainers/features/git:1": {}
     },
-    // "remoteUser": "wordpress"
+    "remoteUser": "wordpress"
 }
