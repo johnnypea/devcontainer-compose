@@ -3,11 +3,7 @@
     "name": "WordPress Test Container",
     "dockerComposeFile": "docker-compose.yml",
     "service": "app",
-    "workspaceFolder": "/workspace",
-
-    "containerEnv": { 
-        "PROJECT_DOMAIN": "${localEnv:PROJECT_DOMAIN}" 
-    },
+    "workspaceFolder": "/var/www/html",
 
     // Features to add to the dev container. More info: https://containers.dev/features.
     "features": {
