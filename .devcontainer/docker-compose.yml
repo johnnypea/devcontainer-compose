@@ -8,14 +8,14 @@ services:
             WORDPRESS_DB_HOST: db
             WORDPRESS_DB_USER: exampleuser
             WORDPRESS_DB_PASSWORD: examplepass
-            WORDPRESS_DB_NAME: ${PROJECT_DOMAIN}
+            WORDPRESS_DB_NAME: exampledb
         volumes:
             - ..:/workspace:cached
         expose:
             - '80'
         labels:
             - 'traefik.enable=true'
-            - "traefik.http.routers.whoami.rule=Host(`$PROJECT_DOMAIN`)"
+            - "traefik.http.routers.whoami.rule=Host(`wp.dev.webentor.com`)"
             - 'traefik.http.routers.whoami.entrypoints=websecure'
             - 'traefik.http.routers.whoami.tls.certresolver=myresolver'
         networks:
